@@ -4,6 +4,9 @@
 #include <tuple>
 #include <iomanip>
 #include <algorithm>
+const fs::path&directory_analyzer:: get_path_to_ftp() const{
+  return path_to_ftp;
+}
 std::ostream  &operator<<(std::ostream&out, const Date&date){
   out<<date.year<<"-"<<date.month<<"-"<<date.day;
   return  out;

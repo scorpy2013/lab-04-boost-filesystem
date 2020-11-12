@@ -35,16 +35,16 @@ class directory_analyzer{
   std::vector<Finance> finance_files; // вектор финансов
   std::vector<std::string> fields; // вектор полей FTP файлов
   std::map<size_t,std::vector<Finance>> accounts; // ключ-номер, значение-финансовый файл
-  void start(const fs::path& PATH_TO_FTP);
   Finance parsing(std::string FIELDS); // разбираем наши поля по переменным
   void analyze_directory(const fs::path& PATH_TO_FTP);
   void analyze_file(const fs::path& PATH_TO_FTP);
  public:
+  void start(const fs::path& PATH_TO_FTP);
+  const fs::path& get_path_to_ftp() const;
   directory_analyzer(const fs::path& PATH_TO_FTP);
   void list_files(std::ostream &out); // выводим ВСЕ файлы
   void info_files(std::ostream &out); // вводим основную информацию о файлах
 };
 // оператор сравнения для нахождения самого актуального (самого нового) файла
 bool operator <(const Finance &lhs,const Finance &rhs);
-std::ostream  &operator<<(std::ostream&out, const Date&date);
 #endif // INCLUDE_DIRECTORY_ANALYZER_HPP_
