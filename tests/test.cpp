@@ -14,9 +14,9 @@ TEST(Finance, make_tuple) {
   lhs.date.year = 2020;
   lhs.date.month = 11;
   lhs.date.day = 11;
-  rhs.date.year = 12;
+  rhs.date.year = 2020;
   rhs.date.month = 11;
-  rhs.date.day = 2020;
+  rhs.date.day = 12;
   EXPECT_TRUE(lhs < rhs);
 }
 TEST(directory_analyzer, path) {

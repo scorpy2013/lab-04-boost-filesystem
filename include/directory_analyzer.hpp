@@ -14,13 +14,13 @@ struct Date {
   unsigned int month;
   unsigned int day;
 };
-//  ___________________________________________________
-//  |  Поле   |	Описание                              |
-//  |balance  |	тип файла                             |
-//  |XXXXXXXX |	8-и значный номер счёта               |
-//  |YYYYMMDD |	дата, где YYYY-год, MM-месяц и DD-день|
-//  |.txt     |	расширение файла                      |
-//  ---------------------------------------------------
+/*____________________________________________________
+|  Поле   |	Описание                              |
+|balance  |	тип файла                             |
+|XXXXXXXX |	8-и значный номер счёта               |
+|YYYYMMDD |	дата, где YYYY-год, MM-месяц и DD-день|
+|.txt     |	расширение файла                      |
+------------------------------------------------------*/
 struct Finance {
   std::string broker;     // брокер
   std::string fields;     // вся информация о брокере
@@ -43,7 +43,7 @@ class directory_analyzer {
  public:
   void start(const fs::path& PATH_TO_FTP);
   const fs::path& get_path_to_ftp() const;
-  directory_analyzer(const fs::path& PATH_TO_FTP);
+  explicit directory_analyzer(const fs::path& PATH_TO_FTP);
   void list_files(std::ostream& out);  // выводим ВСЕ файлы
   void info_files(std::ostream& out);  // вводим основную информацию о файлах
 };
