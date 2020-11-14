@@ -9,7 +9,7 @@
 #include <vector>
 namespace fs = boost::filesystem;
 // YYYYMMDD -> дата, где YYYY-год, MM-месяц и DD-день
-struct Date{
+struct Date {
   unsigned int year;
   unsigned int month;
   unsigned int day;
@@ -21,30 +21,32 @@ struct Date{
 //  |YYYYMMDD |	дата, где YYYY-год, MM-месяц и DD-день|
 //  |.txt     |	расширение файла                      |
 //  ---------------------------------------------------
-struct Finance{
-std::string broker; // брокер
-std::string fields; // вся информация о брокере
-std::string type_file; // тип файла
-size_t number_account; // номер счета
-Date date; // дата
-std::string extension; // расширение файла
+struct Finance {
+  std::string broker;     // брокер
+  std::string fields;     // вся информация о брокере
+  std::string type_file;  // тип файла
+  size_t number_account;  // номер счета
+  Date date;              // дата
+  std::string extension;  // расширение файла
 };
-class directory_analyzer{
+class directory_analyzer {
  private:
-  fs::path path_to_ftp; // путь к анализируемой директории
-  std::vector<Finance> finance_files; // вектор финансов
-  std::vector<std::string> fields; // вектор полей FTP файлов
-  std::map<size_t,std::vector<Finance>> accounts; // ключ-номер, значение-финансовый файл
-  Finance parsing(std::string FIELDS); // разбираем наши поля по переменным
+  fs::path path_to_ftp;  // путь к анализируемой директории
+  std::vector<Finance> finance_files;  // вектор финансов
+  std::vector<std::string> fields;  // вектор полей FTP файлов
+  std::map<size_t, std::vector<Finance>>
+      accounts;  // ключ-номер, значение-финансовый файл
+  Finance parsing(std::string FIELDS);  // разбираем наши поля по переменным
   void analyze_directory(const fs::path& PATH_TO_FTP);
   void analyze_file(const fs::path& PATH_TO_FTP);
+
  public:
   void start(const fs::path& PATH_TO_FTP);
   const fs::path& get_path_to_ftp() const;
   directory_analyzer(const fs::path& PATH_TO_FTP);
-  void list_files(std::ostream &out); // выводим ВСЕ файлы
-  void info_files(std::ostream &out); // вводим основную информацию о файлах
+  void list_files(std::ostream& out);  // выводим ВСЕ файлы
+  void info_files(std::ostream& out);  // вводим основную информацию о файлах
 };
 // оператор сравнения для нахождения самого актуального (самого нового) файла
-bool operator <(const Finance &lhs,const Finance &rhs);
-#endif // INCLUDE_DIRECTORY_ANALYZER_HPP_
+bool operator<(const Finance& lhs, const Finance& rhs);
+#endif  // INCLUDE_DIRECTORY_ANALYZER_HPP_

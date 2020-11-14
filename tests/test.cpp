@@ -1,7 +1,9 @@
 // Copyright 2020 Your Name <your_email>
 
 #include <gtest/gtest.h>
+
 #include <sstream>
+
 #include "directory_analyzer.hpp"
 std::string find_file() {
   std::string s = __FILE__;
@@ -39,4 +41,3 @@ TEST(directory_analyzer, info_files) {
       str.str(),
       "broker: Broker  account: 00122223  files: 1  lastdate: 2018-9-1 \n");
 }
-
