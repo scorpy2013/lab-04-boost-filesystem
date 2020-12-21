@@ -14,13 +14,6 @@ struct Date {
   unsigned int month;
   unsigned int day;
 };
-/*____________________________________________________
-|  Поле   |	Описание                              |
-|balance  |	тип файла                             |
-|XXXXXXXX |	8-и значный номер счёта               |
-|YYYYMMDD |	дата, где YYYY-год, MM-месяц и DD-день|
-|.txt     |	расширение файла                      |
-------------------------------------------------------*/
 struct Finance {
   std::string broker;     // брокер
   std::string fields;     // вся информация о брокере
