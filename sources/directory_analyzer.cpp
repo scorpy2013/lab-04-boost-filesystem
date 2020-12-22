@@ -15,7 +15,14 @@ bool operator<(const Finance &lhs, const Finance &rhs) {
   return std::make_tuple(lhs.date.year, lhs.date.month, lhs.date.day) <
          std::make_tuple(rhs.date.year, rhs.date.month, rhs.date.day);
 }
-void directory_analyzer::start(const fs::path &PATH_TO_FTP) {
+directory_analyzer::directory_analyzer(const fs::path &PATH_TO_FTP) {
+  if (PATH_TO_FTP.empty()) {
+    path_to_ftp = fs::path{".."};
+  } else {
+    path_to_ftp = PATH_TO_FTP;
+  }
+}
+void directory_analyzer::directory_analyzer2(const fs::path &PATH_TO_FTP) {
   for (const auto &it : fs::directory_iterator(PATH_TO_FTP)) {
     if (fs::is_regular_file(it)) {
       analyze_file(it);
@@ -27,12 +34,8 @@ void directory_analyzer::start(const fs::path &PATH_TO_FTP) {
     finance_files.pop_back();
   }
 }
-directory_analyzer::directory_analyzer(const fs::path &PATH_TO_FTP) {
-  if (PATH_TO_FTP.empty()) {
-    path_to_ftp = fs::path{".."};
-  } else {
-    path_to_ftp = PATH_TO_FTP;
-  }
+void directory_analyzer::directory_analyzer3() {
+  directory_analyzer2(path_to_ftp);
 }
 Finance directory_analyzer::parsing(std::string FIELDS) {
   Finance finance;
@@ -77,7 +80,7 @@ void directory_analyzer::info_files(std::ostream &out) {
 }
 void directory_analyzer::analyze_directory(const fs::path &PATH_TO_FTP) {
   fields.push_back(PATH_TO_FTP.stem().string());
-  start(PATH_TO_FTP);
+  directory_analyzer2(PATH_TO_FTP);
 }
 void directory_analyzer::analyze_file(const fs::path &PATH_TO_FTP) {
   try {

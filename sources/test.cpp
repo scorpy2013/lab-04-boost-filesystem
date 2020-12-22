@@ -34,7 +34,7 @@ TEST(directory_analyzer, list_files) {
   analyzer.start(fs::path{find_file()});
   std::stringstream str;
   analyzer.list_files(str);
-  EXPECT_EQ(str.str(), "Broker balance_00122223_20180901.txt\n");
+  EXPECT_EQ(str.str(), "Broker balance_12345678_20201230.txt\n");
 }
 
 TEST(directory_analyzer, info_files) {

@@ -34,9 +34,10 @@ class directory_analyzer {
   void analyze_file(const fs::path& PATH_TO_FTP);
 
  public:
-  void start(const fs::path& PATH_TO_FTP);
   const fs::path& get_path_to_ftp() const;
   explicit directory_analyzer(const fs::path& PATH_TO_FTP);
+  void directory_analyzer2(const fs::path& PATH_TO_FTP);
+  void directory_analyzer3();
   void list_files(std::ostream& out);  // выводим ВСЕ файлы
   void info_files(std::ostream& out);  // вводим основную информацию о файлах
 };
