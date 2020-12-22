@@ -41,7 +41,6 @@ target_link_libraries(template PUBLIC Boost::system Boost::filesystem)
 add_executable(tests
         # TODO: enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
-        #${CMAKE_CURRENT_SOURCE_DIR}/sources/lab4.cpp
         )
 # TODO: change template word to project name and delete this comment
 target_include_directories(template
